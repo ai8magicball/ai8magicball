@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$AI8Ball</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #1a1a2e url('starry-sky.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: #0f0f23;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #00ffcc;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: #00ffcc;
+            font-size: 1em;
+        }
+
+        .social-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        .social-button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        h1 {
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #questionInput {
+            padding: 10px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            background: #0f0f23;
+            color: #fff;
+            box-shadow: 0 0 15px #ff00ff;
+            width: 300px;
+            max-width: 80%;
+            margin-bottom: 20px;
+        }
+
+        #eightBall {
+            width: 200px;
+            height: 200px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px #00ffcc;
+            transition: transform 0.3s ease;
+        }
+
+        #eightBall:hover {
+            transform: scale(1.05);
+        }
+
+        #answer {
+            color: #00ffcc;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(5px, 5px) rotate(5deg); }
+            50% { transform: translate(-5px, -5px) rotate(-5deg); }
+            75% { transform: translate(5px, -5px) rotate(5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="social-buttons">
+            <a href="https://x.com" target="_blank" class="social-button">
+                <img src="https://pngimg.com/uploads/x_logo/x_logo_PNG18.png" alt="X Logo" /> 
+            </a>
+            <a href="https://pump.fun" target="_blank" class="social-button">
+                <img src="https://logos-world.net/wp-content/uploads/2024/10/Pump-Fun-Logo-500x281.png" alt="Pump.Fun Logo" /> 
+            </a>
+        </div>
+    </header>
+    <h1>AI8 Magic Ball (AI8BALL)</h1>
+    <input type="text" id="questionInput" placeholder="Ask a yes/no question..." />
+    <div id="eightBall" onclick="shakeAndAnswer()">
+        <div id="answer">Shake me!</div>
+    </div>
+
+    <script>
+        const answers = [
+            "To the moon, fam! Yes.",
+            "Rugpull incoming. Nah.",
+            "HODL strong, ser. Absolutely.",
+            "FUD says no, but I say maybe.",
+            "WAGMI! It’s a yes.",
+            "NGMI, bro. Nope.",
+            "Pump it or dump it? Yes, 100x.",
+            "Ask again after the dip."
+        ];
+
+        function shakeAndAnswer() {
+            const ball = document.getElementById("eightBall");
+            const answerDiv = document.getElementById("answer");
+
+            // Trigger shake animation
+            ball.classList.add("shake");
+
+            // Update answer after shake
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * answers.length);
+                answerDiv.textContent = answers[randomIndex];
+                ball.classList.remove("shake");
+            }, 500); // Matches animation duration
+        }
+    </script>
+</body>
+</html>
